@@ -10,5 +10,15 @@
         <li><strong>Color:</strong> {{ $sportshoe->color }}</li>
         <li><strong>Mileage:</strong> {{ $sportshoe->mileage }}</li>
     </ul>
+
+    <!-- Edit Link -->
+    <a href="{{ route('sportshoes.edit', $sportshoe->id) }}" class="btn btn-primary">Edit</a>
+
+    <!-- Delete Button Form -->
+    <form action="{{ route('sportshoes.destroy', $sportshoe->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
 </div>
 @endsection

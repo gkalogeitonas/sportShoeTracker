@@ -45,6 +45,11 @@ class SportShoeController extends Controller
       return view('sportshoes.show', compact('sportshoe'));
   }
 
+  public function edit(SportShoe $sportshoe)
+  {
+    return view('sportshoes.edit', compact('sportshoe'));
+  }
+
   public function update(Request $request, SportShoe $sportshoe) {
       $validatedData = $request->validate([
           'brand' => 'required|string|max:255',
