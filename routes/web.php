@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 use App\Http\Controllers\SportShoeController;
-
+Route::get('/', [SportShoeController::class, 'index'])->name('home');
 Route::get('/sportshoes', [SportShoeController::class, 'index'])->name('sportshoes.index');
-
-
 Route::match(['get', 'post'], '/add-shoe', [SportShoeController::class, 'addShoe'])->name('sportshoes.add');
+Route::get('/sportshoes/{sportshoe}', [SportShoeController::class, 'show'])->name('sportshoes.show');
+Route::get('/sportshoes/{sportshoe}/edit', [SportShoeController::class, 'edit'])->name('sportshoes.edit');
+Route::put('/sportshoes/{sportshoe}', [SportShoeController::class, 'update'])->name('sportshoes.update');
+Route::delete('/sportshoes/{sportshoe}', [SportShoeController::class, 'destroy'])->name('sportshoes.destroy');

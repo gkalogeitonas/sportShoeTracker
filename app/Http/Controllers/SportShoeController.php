@@ -10,14 +10,13 @@ use App\Models\SportShoe;
 
 class SportShoeController extends Controller
 {
-  public function index()
-  {
+
+  public function index(){
       $sportShoes = SportShoe::all();
       return view('sportshoes.index', compact('sportShoes'));
   }
 
-  public function addShoe(Request $request)
-  {
+  public function addShoe(Request $request) {
       if ($request->isMethod('post')) {
           $validatedData = $request->validate([
               'brand' => 'required|string|max:255',
@@ -39,4 +38,32 @@ class SportShoeController extends Controller
 
       return view('sportshoes.add_shoe');
   }
+
+
+  public function show(SportShoe $sportshoe)
+  {
+      return view('sportshoes.show', compact('sportshoe'));
+  }
+
+  public function update(Request $request, SportShoe $sportshoe) {
+      $validatedData = $request->validate([
+          'brand' => 'required|string|max:255',
+          'model' => 'required|string|max:255',
+          'size' => 'required|integer|min:1',
+          'color' => 'required|string|max:255',
+      ]);
+
+      $sportshoe->update($validatedData);
+
+      return redirect()->route('sportshoes.index')->with('success', 'Shoe updated successfully!');
+  }
+
+  public function destroy(SportShoe $sportshoe){
+      $sportshoe->delete();
+
+      return redirect()->route('sportshoes.index')->with('success', 'Shoe deleted successfully!');
+  }
+
+
+
 }
