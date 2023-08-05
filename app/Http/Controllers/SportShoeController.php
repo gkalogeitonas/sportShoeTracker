@@ -69,6 +69,18 @@ class SportShoeController extends Controller
       return redirect()->route('sportshoes.index')->with('success', 'Shoe deleted successfully!');
   }
 
+  public function addKilometers(Request $request, SportShoe $sportshoe){
+    $validatedData = $request->validate([
+        'kilometers' => 'required|numeric|min:0',
+    ]);
+
+    // Update the sport shoe's mileage with the added kilometers
+    $newMileage = $sportshoe->mileage + $validatedData['kilometers'];
+    $sportshoe->update(['mileage' => $newMileage]);
+
+    return redirect()->route('sportshoes.show', $sportshoe->id)->with('success', 'Kilometers added successfully!');
+  }
+
 
 
 }

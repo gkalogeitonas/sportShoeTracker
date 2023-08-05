@@ -24,5 +24,14 @@
         </div>
         <button type="submit" class="btn btn-primary">Update Shoe</button>
     </form>
+    <!-- Form for adding kilometers -->
+    <form action="{{ route('sportshoes.add-kilometers', $sportshoe->id) }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="kilometers">Kilometers Run:</label>
+            <input type="number" class="form-control" id="kilometers" name="kilometers" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Kilometers</button>
+    </form>    
 </div>
 @endsection

@@ -25,3 +25,4 @@ Route::get('/sportshoes/{sportshoe}', [SportShoeController::class, 'show'])->nam
 Route::get('/sportshoes/{sportshoe}/edit', [SportShoeController::class, 'edit'])->name('sportshoes.edit');
 Route::put('/sportshoes/{sportshoe}', [SportShoeController::class, 'update'])->name('sportshoes.update');
 Route::delete('/sportshoes/{sportshoe}', [SportShoeController::class, 'destroy'])->name('sportshoes.destroy');
+Route::post('/sportshoes/{sportshoe}/add-kilometers', [SportShoeController::class, 'addKilometers'])->name('sportshoes.add-kilometers');

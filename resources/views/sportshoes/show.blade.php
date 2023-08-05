@@ -11,14 +11,16 @@
         <li><strong>Mileage:</strong> {{ $sportshoe->mileage }}</li>
     </ul>
 
-    <!-- Edit Link -->
-    <a href="{{ route('sportshoes.edit', $sportshoe->id) }}" class="btn btn-primary">Edit</a>
+    <div class="buttons_wraper">
+      <!-- Edit Link -->
+      <a href="{{ route('sportshoes.edit', $sportshoe->id) }}" class="btn btn-primary">Edit</a>
 
-    <!-- Delete Button Form -->
-    <form action="{{ route('sportshoes.destroy', $sportshoe->id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
+      <!-- Delete Button Form -->
+      <form action="{{ route('sportshoes.destroy', $sportshoe->id) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
 </div>
 @endsection
